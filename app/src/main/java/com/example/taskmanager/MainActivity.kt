@@ -4,7 +4,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.feature.presentation.navigation.TaskManagerNavGraph
+import com.example.feature.presentation.settings.SettingsViewModel
 import com.example.taskmanager.ui.theme.TaskManagerTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,7 +18,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            TaskManagerTheme {
+
+            val viewModel: SettingsViewModel = hiltViewModel()
+            val themeMode by viewModel.themeMode.collectAsState()
+            TaskManagerTheme(darkTheme = themeMode == "dark") {
                 TaskManagerNavGraph()
             }
         }

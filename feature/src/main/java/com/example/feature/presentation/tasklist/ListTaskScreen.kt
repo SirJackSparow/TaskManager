@@ -8,6 +8,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -44,7 +46,12 @@ fun TaskListScreen(navController: NavController, viewModel: ListTaskViewModel = 
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.primary,
                 ),
-                title = { Text(text = "Task List") }
+                title = { Text(text = "Task List") },
+                actions = {
+                    IconButton(onClick = { navController.navigate(Screen.Settings.route) }) {
+                        Icon(Icons.Filled.Settings, contentDescription = "Settings")
+                    }
+                }
             )
         },
         floatingActionButton = {
@@ -170,14 +177,18 @@ fun TaskListScreen(navController: NavController, viewModel: ListTaskViewModel = 
                                                     navController.navigate(
                                                         Screen.TaskDetail.createRoute(task.id)
                                                     )
-                                                }
+                                                },
+                                            label = task.priority.toString()
                                         ) {
                                             Column(
                                                 modifier = Modifier
                                                     .padding(16.dp)
                                                     .fillMaxSize()
                                             ) {
-                                                Text(task.title, style = MaterialTheme.typography.titleLarge)
+                                                Text(
+                                                    task.title,
+                                                    style = MaterialTheme.typography.titleLarge
+                                                )
                                                 Text(
                                                     task.description ?: "",
                                                     style = MaterialTheme.typography.bodyMedium

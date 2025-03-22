@@ -12,10 +12,13 @@ class TaskRepositoryImpl @Inject constructor(private val taskDao: TaskDao) : Tas
 
     override suspend fun deleteTask(id: Int) = taskDao.deleteTask(id)
 
-    override suspend fun updateTaskStatus(id: Int, isCompleted: Boolean) =
-        taskDao.updateTaskStatus(id, isCompleted)
+    override suspend fun updateTaskStatus(id: Int, isCompleted: Boolean, progress: Int) =
+        taskDao.updateTaskStatus(id, isCompleted, progress)
 
     override suspend fun updateTasksOrder(tasks: List<TaskEntity>) {
         taskDao.updateTasks(tasks)
     }
+
+    override suspend fun getTaskById(taskId: Int): TaskEntity? =
+        taskDao.getTaskById(taskId)
 }

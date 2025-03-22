@@ -5,6 +5,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.feature.presentation.addlist.AddTaskManagerScreen
+import com.example.feature.presentation.detailstask.DetailTaskScreen
+import com.example.feature.presentation.settings.SettingsScreen
 import com.example.feature.presentation.tasklist.TaskListScreen
 
 @Composable
@@ -19,12 +21,12 @@ fun TaskManagerNavGraph() {
             AddTaskManagerScreen(navController)
         }
         composable(Screen.Settings.route) {
-            //SettingsScreen(navController)
+            SettingsScreen(navController)
         }
         composable(Screen.TaskDetail.route) { backStackEntry ->
             val taskId = backStackEntry.arguments?.getString("taskId")?.toIntOrNull()
             if (taskId != null) {
-                //TaskDetailScreen(navController, taskId)
+                DetailTaskScreen(navController, taskId)
             }
         }
     }

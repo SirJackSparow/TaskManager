@@ -16,11 +16,14 @@ interface TaskDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTask(task: TaskEntity)
 
+    @Query("SELECT * FROM tasks WHERE id = :taskId LIMIT 1")
+    suspend fun getTaskById(taskId: Int): TaskEntity?
+
     @Query("DELETE FROM tasks WHERE id = :id")
     suspend fun deleteTask(id: Int)
 
-    @Query("UPDATE tasks SET isCompleted = :isCompleted WHERE id = :id")
-    suspend fun updateTaskStatus(id: Int, isCompleted: Boolean)
+    @Query("UPDATE tasks SET isCompleted = :isCompleted, progress = :progress WHERE id = :id")
+    suspend fun updateTaskStatus(id: Int, isCompleted: Boolean, progress: Int)
 
     @Update
     suspend fun updateTasks(tasks: List<TaskEntity>)

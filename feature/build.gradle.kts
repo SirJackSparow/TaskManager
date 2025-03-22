@@ -58,4 +58,5 @@ dependencies {
     implementation(libs.compose.navigation)
     implementation(libs.javapoet)
     implementation(libs.hilt.navigation.compose)
+    implementation(libs.androidx.datastore)
 }
