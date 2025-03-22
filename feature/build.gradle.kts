@@ -45,6 +45,7 @@ dependencies {
     testImplementation(libs.junit)
     ksp(libs.room.compiler)
     ksp(libs.hilt.compiler)
+    androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.androidx.activity.compose)
@@ -59,4 +60,7 @@ dependencies {
     implementation(libs.javapoet)
     implementation(libs.hilt.navigation.compose)
     implementation(libs.androidx.datastore)
+    androidTestImplementation(libs.compose.ui.test.junit4)
+    debugImplementation(libs.compose.ui.test.manifest)
+    androidTestImplementation(libs.shot.android)
 }

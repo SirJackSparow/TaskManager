@@ -29,8 +29,6 @@ import com.example.feature.presentation.navigation.Screen
 fun TaskListScreen(navController: NavController, viewModel: ListTaskViewModel = hiltViewModel()) {
     val state by viewModel.state.collectAsState()
     var isFabVisible by remember { mutableStateOf(false) }
-
-    // Sorting & Filtering state
     var selectedSortOption by remember { mutableStateOf("Priority") }
     var selectedFilter by remember { mutableStateOf("All") }
 
@@ -82,13 +80,11 @@ fun TaskListScreen(navController: NavController, viewModel: ListTaskViewModel = 
                             .padding(8.dp),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        // Sorting Dropdown
                         SortDropdown(
                             selectedOption = selectedSortOption,
                             onOptionSelected = { selectedSortOption = it }
                         )
 
-                        // Filtering Dropdown
                         FilterDropdown(
                             selectedFilter = selectedFilter,
                             onFilterSelected = { selectedFilter = it }
@@ -103,14 +99,14 @@ fun TaskListScreen(navController: NavController, viewModel: ListTaskViewModel = 
                                 else -> true
                             }
                         }
-                        .sortedBy {
+                        .sortedWith (
                             when (selectedSortOption) {
-                                "Priority" -> it.priority.toString()
-                                "Due Date" -> it.dueDate.toString()
-                                "Alphabetical" -> it.title
-                                else -> it.priority.toString()
+                                "Priority" -> compareByDescending { it.priority.ordinal }
+                                "Due Date" ->compareBy {it.dueDate.toString()}
+                                "Alphabetical" -> compareBy {it.title}
+                                else -> compareBy {it.priority.toString()}
                             }
-                        }
+                        )
 
                     if (sortedFilteredTasks.isEmpty()) {
                         Box(
