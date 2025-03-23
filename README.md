@@ -21,7 +21,7 @@ This app follows the **MVI (Model-View-Intent) pattern**, ensuring:
 
 - **Unidirectional Data Flow** for better state management.
 - **Separation of Concerns** between UI, business logic, and data.
-- **Immutable UI State** using `StateFlow` / `LiveData`.
+- **Immutable UI State** using `StateFlow`.
 
 ### **MVI Breakdown:**
 1️⃣ **View** 🖼️ → Renders UI and listens to state changes  
