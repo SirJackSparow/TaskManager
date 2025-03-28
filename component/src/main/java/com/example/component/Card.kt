@@ -44,7 +44,7 @@ fun GradientCard(
                 )
                 .padding(16.dp)
         ) {
-            label?.let {
+            label.let {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
