@@ -8,4 +8,5 @@ sealed class Screen(val route: String) {
 
     object AddTask : Screen("add_task")
     object Settings : Screen("settings")
+    object SecureScreen : Screen("secure_screen")
 }

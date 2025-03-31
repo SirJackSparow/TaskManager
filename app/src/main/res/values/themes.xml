@@ -3,3 +3,9 @@
 
     <style name="Theme.TaskManager" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>
+
+<!--Just for biometric-->
+<!--<resources>-->
+
+<!--<style name="Theme.TaskManager" parent="Theme.AppCompat" />-->
+<!--</resources>-->

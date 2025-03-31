@@ -3,8 +3,10 @@ package com.example.core.di
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.fragment.app.FragmentActivity
 import androidx.room.Room
 import com.example.core.data.Database
+import com.example.core.data.SecurePreferences
 import com.example.core.data.dao.TaskDao
 import com.example.core.data.dataStore
 import dagger.Module
@@ -35,4 +37,14 @@ object AppModule {
     fun provideDataStore(@ApplicationContext context: Context): DataStore<Preferences> {
         return context.dataStore
     }
+
+    @Provides
+    @Singleton
+    fun provideSecurePreferences(@ApplicationContext context: Context): SecurePreferences {
+        return SecurePreferences(context)
+    }
+
+    @Provides
+    @Singleton
+    fun provideActivity(activity: FragmentActivity) : FragmentActivity = activity
 }

@@ -14,13 +14,15 @@ material = "1.10.0"
 hilt = "2.48"
 navigation = "2.8.9"
 room = "2.6.1"
-coroutines = "1.7.3"
-lifecycle = "2.8.7"
 ksp = "2.0.21-1.0.27"
 hiltNavigationCompose = "1.1.0"
 androidx-datastore = "1.0.0"
 shotAndroid = "5.14.0"
 composeUiTest = "1.3.1"
+biometric = "1.4.0-alpha03"
+crypto = "1.1.0-alpha06"
+core = "1.13.1"
+animationNavigate = "0.32.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -44,17 +46,20 @@ compose-navigation = { module = "androidx.navigation:navigation-compose", versio
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
+biometric-library = { module = "androidx.biometric:biometric", version.ref = "biometric" }
+security-crypto = { module = "androidx.security:security-crypto", version.ref = "crypto" }
+animation-navigate = { module = "com.google.accompanist:accompanist-navigation-animation", version.ref = "animationNavigate"}
+
 
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 androidx-datastore = { module = "androidx.datastore:datastore-preferences", version.ref = "androidx-datastore" }
 shot-android = { module = "com.karumi:shot-android", version.ref = "shotAndroid" }
 compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "composeUiTest" }
 compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "composeUiTest" }
+androidx-core = { group = "androidx.core", name = "core", version.ref = "core" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
